@@ -17,7 +17,7 @@ body{
 	margin: 0 auto;
 }
 
-.panel-body > img{
+.panel-body  img{
 	display: block;
 	max-width: 100%;
 }
