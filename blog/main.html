@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="blogApp" lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="Niee 웹 개발관련 예제들과 잡다한 이야기">
+<meta name="author" content="niee@naver.com">
+<link rel="icon" href="/favicon.png">
+<!-- javascript lib install -->
+<link rel="stylesheet" href="/Blog/resources/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/Blog/resources/lib/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/Blog/resources/css/main.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="/Blog/resources/lib/html5shiv.min.js"></script>
+<script src="/Blog/resources/lib/respond.min.js"></script>
+<![endif]-->
+<script src="/Blog/resources/lib/jquery-1.11.3.min.js"></script>
+<script src="/Blog/resources/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/Blog/resources/lib/angular.js"></script>
+<script src="/Blog/resources/lib/angular-sanitize.min.js"></script>
+<script src="/Blog/resources/lib/angular-route.min.js"></script>
+<script src="/Blog/resources/js/blogApp.js"></script>
+<title>Niee's Blog</title>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#contents">Niee</a>
+		</div>
+		<div class="collapse navbar-collapse" id="nav-menu1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">JAVA & Web 관련 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#subContents">JAVA 기본 <span class="badge pull-right pull-right">0</span></a></li>
+						<li class="divider"></li>
+						<li><a href="#subContents">Servlet <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">JSP <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Spring <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Spring-Boot <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Spring-Security <span class="badge pull-right">0</span></a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Javascript 관련 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#subContents">기본 <span class="badge pull-right">0</span></a></li>
+						<li class="divider"></li>
+						<li><a href="#subContents">Jquery <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Jquery-Mobile <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">AngularJS <span class="badge pull-right">0</span></a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">DB & Server 관련 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#subContents">My-sql <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Oracle <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Ms-sql <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">MongoDB <span class="badge pull-right">0</span></a></li>
+						<li class="divider"></li>
+						<li><a href="#subContents">Apache <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Tomcat <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Weblogic <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Node.js <span class="badge pull-right">0</span></a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">개발 기타 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#subContents">BootStrap <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Eclipse <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">Maven <span class="badge pull-right">0</span></a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">개인 공간 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#subContents">잡 생각 <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">뮤직 비디오 <span class="badge pull-right">0</span></a></li>
+						<li><a href="#subContents">흠....... <span class="badge pull-right">0</span></a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div ng-view></div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+	<div class="container-fluid">
+		<div class="center-block git-group">
+			<div>
+				<iframe src="http://ghbtns.com/github-btn.html?user=ParkMinKyu&amp;repo=Blog&amp;type=watch&amp;count=true" width="101" height="20" title="Star on GitHub"></iframe>
+				<iframe src="http://ghbtns.com/github-btn.html?user=ParkMinKyu&amp;repo=Blog&amp;type=fork&amp;count=true" width="101" height="20" title="Fork on GitHub"></iframe>
+			</div>
+			Copyright © Niee. 2015 All rights reserved. eMail) <a href="mailTo:niee@naver.com">niee@naver.com</a>
+		</div>
+	</div>
+</nav>
+</body>
+</html>

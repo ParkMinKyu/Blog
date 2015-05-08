@@ -1,0 +1,15 @@
+<div class="container-fluid">
+	<div class="page-header">
+		<h1>{{ contents.title}} <small> {{ contents.regDate }} </small></h1>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div ng-bind-html="content"></div>
+			<br>
+			<br>
+			<p>
+				<a class="btn btn-primary" onclick="history.back(-1);" role="button">이전</a>
+			</p>
+		</div>
+	</div>
+</div>
