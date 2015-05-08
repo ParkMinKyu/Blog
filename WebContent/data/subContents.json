@@ -1,0 +1,106 @@
+{
+"success" : 1,
+"groupName" : "JAVA & WEB 관련",
+"subGroupName" : "JAVA 기본",
+"count" : "23",
+"list" : [
+					{
+						"seq" : 1,
+						"title" : "샘플 제목 1 입니다.",
+						"contents" : "샘플 내용 1 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 2,
+						"title" : "샘플 제목 2 입니다.",
+						"contents" : "샘플 내용 2 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 3,
+						"title" : "샘플 제목 3 입니다.",
+						"contents" : "샘플 내용 3 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 1,
+						"title" : "샘플 제목 4 입니다.",
+						"contents" : "샘플 내용 4 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 2,
+						"title" : "샘플 제목 5 입니다.",
+						"contents" : "샘플 내용 5 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 3,
+						"title" : "샘플 제목 6 입니다.",
+						"contents" : "샘플 내용 6 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 1,
+						"title" : "샘플 제목 7 입니다.",
+						"contents" : "샘플 내용 7 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 2,
+						"title" : "샘플 제목 8 입니다.",
+						"contents" : "샘플 내용 8 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-01"
+					},
+					{
+					"seq" : 3,
+						"title" : "샘플 제목 9 입니다.",
+						"contents" : "샘플 내용 9 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-02"
+					},
+					{
+					"seq" : 1,
+						"title" : "샘플 제목 10 입니다.",
+						"contents" : "샘플 내용 10 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-03"
+					},
+					{
+					"seq" : 2,
+						"title" : "샘플 제목 11 입니다.",
+						"contents" : "샘플 내용 11 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-03"
+					},
+					{
+					"seq" : 3,
+						"title" : "샘플 제목 12 입니다.",
+						"contents" : "샘플 내용 12 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-04"
+					},
+					{
+					"seq" : 1,
+						"title" : "샘플 제목 13 입니다.",
+						"contents" : "샘플 내용 13 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-05"
+					},
+					{
+					"seq" : 2,
+						"title" : "샘플 제목 14 입니다.",
+						"contents" : "샘플 내용 14 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-06"
+					}
+				]
+ }

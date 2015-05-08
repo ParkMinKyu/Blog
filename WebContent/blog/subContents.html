@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<div class="page-header">
+		<h2>{{ contents.groupName }} > {{ contents.subGroupName }} 글 목록 입니다. <small>지난 한 달간 {{ contents.count }} 건의 글이 등록 되었 습니다. </small></h2>
+	</div>
+	<div class="orderRadio">
+		<label class="radio-inline">
+			<input ng-model="orderProp" type="radio" name="orderRadio" id="inlineRadio1" value="title"> 제목 기준
+		</label>
+		<label class="radio-inline">
+			<input ng-model="orderProp" type="radio" name="orderRadio" id="inlineRadio2" value="-regDate"> 작성일 기준
+		</label>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-md-3" ng-repeat="c in contents.list | filter:query | orderBy:orderProp">
+			<div class="thumbnail">
+				<img ng-src="/resources/img/{{c.imgUrl}}" alt="이미지가 없습니다.">
+				<div class="caption">
+					<h3>{{ c.title }}</h3>
+					<p>{{ c.contents }}</p>
+					<p>
+						<a href="#view/{{ c.seq }}" class="btn btn-primary" role="button">글 보기</a>
+						<a class="btn btn-default" role="button">{{ c.regDate }}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav>
+		<ul class="pagination">
+			<li>
+				<a href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li>
+				<a href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>

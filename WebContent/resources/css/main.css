@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+body{
+	padding-top : 50px;
+	padding-bottom: 50px;
+}
+
+.git-group{
+	padding-top : 5px;
+	text-align: center;
+}
+
+.jumbotron > img{
+	display: block;
+	max-width: 100%;
+	height: auto;
+	max-height: 350px;
+	margin: 0 auto;
+}
+
+iframe{
+	border: 0;
+}
+
+.orderRadio{
+	width: 100%;
+	text-align: right;
+	margin-bottom : 10px;
+}
