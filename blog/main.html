@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="menuCtrl">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu1">
@@ -37,62 +37,7 @@
 			</button>
 			<a class="navbar-brand" href="#contents">Niee</a>
 		</div>
-		<div class="collapse navbar-collapse" id="nav-menu1">
-			<ul class="nav navbar-nav">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">JAVA & Web 관련 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#subContents">JAVA 기본 <span class="badge pull-right pull-right">0</span></a></li>
-						<li class="divider"></li>
-						<li><a href="#subContents">Servlet <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">JSP <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Spring <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Spring-Boot <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Spring-Security <span class="badge pull-right">0</span></a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Javascript 관련 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#subContents">기본 <span class="badge pull-right">0</span></a></li>
-						<li class="divider"></li>
-						<li><a href="#subContents">Jquery <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Jquery-Mobile <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">AngularJS <span class="badge pull-right">0</span></a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">DB & Server 관련 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#subContents">My-sql <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Oracle <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Ms-sql <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">MongoDB <span class="badge pull-right">0</span></a></li>
-						<li class="divider"></li>
-						<li><a href="#subContents">Apache <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Tomcat <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Weblogic <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Node.js <span class="badge pull-right">0</span></a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">개발 기타 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#subContents">BootStrap <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Eclipse <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">Maven <span class="badge pull-right">0</span></a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">개인 공간 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#subContents">잡 생각 <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">뮤직 비디오 <span class="badge pull-right">0</span></a></li>
-						<li><a href="#subContents">흠....... <span class="badge pull-right">0</span></a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
+		<div class="collapse navbar-collapse" id="nav-menu1" ng-bind-html="menu"></div>
 	</div>
 </nav>
 <div ng-view></div>

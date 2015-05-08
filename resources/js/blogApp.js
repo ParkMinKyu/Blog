@@ -1,4 +1,4 @@
-var blogApp = angular.module('blogApp',['ngRoute','blogControllers','ngSanitize']);
+var blogApp = angular.module('blogApp',['ngRoute','menuControllers','blogControllers','ngSanitize']);
 
 blogApp.config(function($routeProvider){
 	$routeProvider.when('/contents',{ 
@@ -14,6 +14,43 @@ blogApp.config(function($routeProvider){
 		redirectTo: '/contents'
 	});
 });
+
+var menuControllers = angular.module('menuControllers',[]);
+menuControllers.controller('menuCtrl',['$scope', '$sce', '$http',
+	function($scope, $sce, $http){
+		$http.get('/Blog/data/menu.json').success(function(data){
+			var menuList = data.menuList;
+			var menuHtml = '';
+	    	for(var i = 0 ; i < menuList.length ; i ++){
+	    		var $ul = $('<ul class="nav navbar-nav">');
+	    		var menu = menuList[i]; 
+	    		var childs = menu.child;
+	    		if(childs.length == 0){
+	    			$ul.append('<li><a href="'+menu.url+'">'+menu.title+' <span class="badge pull-right pull-right">'+menu.count+'</span></a></li>');
+	    		}else{
+	    			var $li = $('<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'+menu.title+' <span class="caret"></span></a></li>');
+	    			var $cul = $('<ul class="dropdown-menu" role="menu">');
+	    			$li.append($cul);
+	    			for(var j = 0 ; j < childs.length ; j ++){
+	    				var child = childs[j];
+	    				if(child.isLine){
+	    					var $cli = $('<li class="divider"></li>');
+	    					$cul.append($cli);
+	    				}
+	    				else{
+	    					var $cli = $('<li><a href="'+child.url+'">'+child.title+' <span class="badge pull-right pull-right">'+child.count+'</span></a></li>');
+	    					$cul.append($cli);
+	    				}
+	    			}
+	    			$ul.append($li);
+	    		}
+	    		menuHtml += $ul[0].outerHTML;
+	    	}
+	    	$scope.menu = $sce.trustAsHtml(menuHtml);  
+	    	
+		});
+	}
+]);
 
 var blogControllers = angular.module('blogControllers',[]);
 
