@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="Niee 웹 개발관련 예제들과 잡다한 이야기">
 <meta name="author" content="niee@naver.com">
-<link rel="icon" href="/favicon.png">
+<link rel="icon" href="/Blog/favicon.png">
 <!-- javascript lib install -->
 <link rel="stylesheet" href="/Blog/resources/lib/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/Blog/resources/lib/bootstrap/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="/Blog/resources/css/main.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-<script src="/Blog/resources/lib/html5shiv.min.js"></script>
-<script src="/Blog/resources/lib/respond.min.js"></script>
+<script src="/resources/lib/html5shiv.min.js"></script>
+<script src="/resources/lib/respond.min.js"></script>
 <![endif]-->
 <script src="/Blog/resources/lib/jquery-1.11.3.min.js"></script>
 <script src="/Blog/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -41,6 +41,22 @@
 	</div>
 </nav>
 <div ng-view></div>
+<div class="container-fluid" data-ng-controller="rssCtrl" ng-show="rssList.length > 0">
+	<div class="page-header">
+		<h4>구독중인 rss 목록. <small>총 {{rssList.length}} 개의 rss가 등록 되었습니다.</small></h4>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-md-3" ng-repeat="rss in rssList">
+			<div class="alert alert-success" role="alert">{{rss.name}} <span class="badge pull-right">{{(rss.subRss | filter:filterText).length}}</span></div>
+			<div class="list-group">
+			  <a href="{{feed.link}}" class="list-group-item" ng-repeat="feed in rss.subRss | filter:filterText">
+			    <h4 class="list-group-item-heading">{{feed.title}}</h4>
+			    <p class="list-group-item-text">{{feed.contentSnippet}}<br>{{feed.publishedDate | date:'yyyy년 MM월 dd일'}}</p>
+			  </a>
+			</div>
+        </div>
+	</div>
+</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container-fluid">
 		<div class="center-block git-group">

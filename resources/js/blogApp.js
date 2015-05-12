@@ -1,10 +1,11 @@
-var blogApp = angular.module('blogApp',['ngRoute','menuControllers','blogControllers','ngSanitize']);
+'use strict';
+var blogApp = angular.module('blogApp',['ngRoute','menuControllers','blogControllers','rssControllers','ngSanitize']);
 
 blogApp.config(function($routeProvider){
 	$routeProvider.when('/contents',{ 
 		templateUrl : '/Blog/blog/contents.html',
 		controller : 'contentsCtrl'
-	}).when('/subContents',{ 
+	}).when('/subContents/:seq',{ 
 		templateUrl : '/Blog/blog/subContents.html',
 		controller : 'subContentsCtrl'
 	}).when('/view/:seq',{ 
@@ -26,19 +27,19 @@ menuControllers.controller('menuCtrl',['$scope', '$sce', '$http',
 	    		var menu = menuList[i]; 
 	    		var childs = menu.child;
 	    		if(childs.length == 0){
-	    			$ul.append('<li><a href="'+menu.url+'">'+menu.title+' <span class="badge pull-right pull-right">'+menu.count+'</span></a></li>');
+	    			$ul.append('<li><a href="#subContents/'+menu.seq+'">'+menu.title+' <span class="badge pull-right pull-right">'+menu.count+'</span></a></li>');
 	    		}else{
 	    			var $li = $('<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'+menu.title+' <span class="caret"></span></a></li>');
 	    			var $cul = $('<ul class="dropdown-menu" role="menu">');
 	    			$li.append($cul);
 	    			for(var j = 0 ; j < childs.length ; j ++){
 	    				var child = childs[j];
-	    				if(child.isLine){
-	    					var $cli = $('<li class="divider"></li>');
+	    				if(!child.isLine){
+	    					var $cli = $('<li><a href="#subContents/'+child.seq+'">'+child.title+' <span class="badge pull-right pull-right">'+child.count+'</span></a></li>');
 	    					$cul.append($cli);
 	    				}
 	    				else{
-	    					var $cli = $('<li><a href="'+child.url+'">'+child.title+' <span class="badge pull-right pull-right">'+child.count+'</span></a></li>');
+	    					var $cli = $('<li class="divider"></li>');
 	    					$cul.append($cli);
 	    				}
 	    			}
@@ -63,10 +64,11 @@ blogControllers.controller('contentsCtrl',['$scope','$http',
 	}
 ]);
 
-blogControllers.controller('subContentsCtrl',['$scope','$http',
-	function($scope,$http){
+blogControllers.controller('subContentsCtrl',['$scope', '$routeParams', '$http',
+	function($scope, $routeParams, $http){
 		$http.get('/Blog/data/subContents.json').success(function(data){
 			$scope.contents = data;
+			$scope.menuSeq = $routeParams.seq;
 		});
 		$scope.orderProp = "-regDate";
 	}
@@ -80,3 +82,33 @@ blogControllers.controller('viewCtrl',['$scope','$sce','$routeParams','$http',
 		});
 	}
 ]);
+
+var rssControllers = angular.module('rssControllers',[]);
+
+rssControllers.controller('rssCtrl',['$scope', 'FeedService','$http',
+	function($scope, Feed,$http){
+		$http.get('/Blog/data/rss.json').success(function(data){
+			var rssList = data.rssList;
+			$scope.rssList = new Array();
+			for(var i = 0 ; i < rssList.length ; i ++){
+				$scope.rssList.push(rssList[i]);
+				var rss = rssList[i];
+				Feed.parseFeed(rss.url,rss.getCount).then(function(res){
+					for(var i = 0 ; i < $scope.rssList.length ; i ++){
+						if($scope.rssList[i].url == res.data.responseData.feed.feedUrl){
+							$scope.rssList[i].subRss = res.data.responseData.feed.entries; 
+						}
+					}
+				});
+			}
+		});
+	}
+]);
+
+rssControllers.factory('FeedService',['$http',function($http){
+    return {
+        parseFeed : function(url,count){
+            return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num='+count+'&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+        }
+    };
+}]);

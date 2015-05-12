@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="page-header">
-		<h2>{{ contents.groupName }} > {{ contents.subGroupName }} 글 목록 입니다. <small>지난 한 달간 {{ contents.count }} 건의 글이 등록 되었 습니다. </small></h2>
+		<h2>{{ contents.groupName }} > {{ contents.subGroupName }} 글 목록 입니다. <small>지난 한 달간 {{ contents.count }} 건의 글이 등록 되었 습니다. (menu seq : {{menuSeq}})</small></h2>
 	</div>
 	<div class="orderRadio">
 		<label class="radio-inline">
@@ -9,6 +9,7 @@
 		<label class="radio-inline">
 			<input ng-model="orderProp" type="radio" name="orderRadio" id="inlineRadio2" value="-regDate"> 작성일 기준
 		</label>
+		<a class="btn btn-info" role="button">RSS 구독</a>
 	</div>
 	<div class="row">
 		<div class="col-sm-6 col-md-3" ng-repeat="c in contents.list | filter:query | orderBy:orderProp">
