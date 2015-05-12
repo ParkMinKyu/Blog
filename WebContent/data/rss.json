@@ -1,0 +1,25 @@
+{
+"success" : 1,
+"rssList" : [
+			{
+				"name" : "내 블로그",
+				"url" : "http://niee.kr/rss",
+				"getCount" : 5
+			},
+			{
+				"name" : "카페",
+				"url" : "http://cafe.rss.naver.com/javachobostudy",
+				"getCount" : 10
+			},
+			{
+				"name" : "Git hub",
+				"url" : "https://github.com/ParkMinKyu.atom",
+				"getCount" : 8
+			},
+			{
+				"name" : "IT 관련 뉴스",
+				"url" : "http://rss.etnews.com/Section04.xml",
+				"getCount" : 5
+			}
+			] 
+ }

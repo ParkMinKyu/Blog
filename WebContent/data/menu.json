@@ -3,13 +3,13 @@
 "menuList" : [
 				{
 					"title" : "JAVA & WEB 관련",
-					"url" : "#subContents",
+					"seq" : "1",
 					"count" : 14,
 					"child" : [
 						{
 							"isLine" : false,
 							"title" : "JAVA 기본",
-							"url" : "#subContents",
+							"seq" : "2",
 							"count" : 4
 						},
 						{
@@ -18,44 +18,44 @@
 						{
 							"isLine" : false,
 							"title" : "Servlet",
-							"url" : "#subContents",
+							"seq" : "3",
 							"count" : 5
 						},
 						{
 							"isLine" : false,
 							"title" : "JSP",
-							"url" : "#subContents",
+							"seq" : "4",
 							"count" : 14
 						},
 						{
 							"isLine" : false,
 							"title" : "Spring",
-							"url" : "#subContents",
+							"seq" : "5",
 							"count" : 24
 						},
 						{
 							"isLine" : false,
 							"title" : "Spring-Boot",
-							"url" : "#subContents",
+							"seq" : "6",
 							"count" : 3
 						},
 						{
 							"isLine" : false,
 							"title" : "Spring-Security",
-							"url" : "#subContents",
+							"seq" : "7",
 							"count" : 4
 						}
 					]
 				},
 				{
 					"title" : "Javascript 관련",
-					"url" : "#subContents",
+					"seq" : "8",
 					"count" : 14,
 					"child" : [
 						{
 							"isLine" : false,
 							"title" : "기본",
-							"url" : "#subContents",
+							"seq" : "9",
 							"count" : 4
 						},
 						{
@@ -64,50 +64,50 @@
 						{
 							"isLine" : false,
 							"title" : "Jquery",
-							"url" : "#subContents",
+							"seq" : "10",
 							"count" : 5
 						},
 						{
 							"isLine" : false,
 							"title" : "Jquery-Mobile",
-							"url" : "#subContents",
+							"seq" : "11",
 							"count" : 14
 						},
 						{
 							"isLine" : false,
 							"title" : "AngularJS",
-							"url" : "#subContents",
+							"seq" : "12",
 							"count" : 24
 						}
 					]
 				},
 				{
 					"title" : "DB & Server 관련",
-					"url" : "#subContents",
+					"seq" : "13",
 					"count" : 14,
 					"child" : [
 						{
 							"isLine" : false,
 							"title" : "My-sql",
-							"url" : "#subContents",
+							"seq" : "14",
 							"count" : 4
 						},
 						{
 							"isLine" : false,
 							"title" : "Oracle",
-							"url" : "#subContents",
+							"seq" : "15",
 							"count" : 5
 						},
 						{
 							"isLine" : false,
 							"title" : "Ms-sql",
-							"url" : "#subContents",
+							"seq" : "16",
 							"count" : 14
 						},
 						{
 							"isLine" : false,
 							"title" : "MongoDB",
-							"url" : "#subContents",
+							"seq" : "17",
 							"count" : 24
 						},
 						{
@@ -116,51 +116,51 @@
 						{
 							"isLine" : false,
 							"title" : "Apache",
-							"url" : "#subContents",
+							"seq" : "18",
 							"count" : 3
 						},
 						{
 							"isLine" : false,
 							"title" : "Tomcat",
-							"url" : "#subContents",
+							"seq" : "19",
 							"count" : 4
 						},
 						{
 							"isLine" : false,
 							"title" : "Node.js",
-							"url" : "#subContents",
+							"seq" : "20",
 							"count" : 4
 						}
 					]
 				},
 				{
 					"title" : "개발 기타",
-					"url" : "#subContents",
+					"seq" : "21",
 					"count" : 14,
 					"child" : [
 						{
 							"isLine" : false,
 							"title" : "Bootstrap",
-							"url" : "#subContents",
+							"seq" : "22",
 							"count" : 4
 						},
 						{
 							"isLine" : false,
 							"title" : "Eclipse",
-							"url" : "#subContents",
+							"seq" : "23",
 							"count" : 5
 						},
 						{
 							"isLine" : false,
 							"title" : "Maven",
-							"url" : "#subContents",
+							"seq" : "24",
 							"count" : 14
 						}
 					]
 				},
 				{
 					"title" : "개인 공간",
-					"url" : "#subContents",
+					"seq" : "25",
 					"count" : 14,
 					"child" : [
 					]
