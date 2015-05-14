@@ -1,5 +1,16 @@
 'use strict';
-var blogApp = angular.module('blogApp',['ngRoute','menuControllers','blogControllers','rssControllers','ngSanitize']);
+var blogApp = angular.module('blogApp',
+		['ngRoute','menuControllers','blogControllers','rssControllers','angulike','ngSanitize'])
+		.run([
+		      '$rootScope', function ($rootScope) {
+		    	  $rootScope.facebookAppId = '[FacebookAppId]'; // set your facebook app id here
+		      }
+	]);
+
+blogApp.constant('appConfig',{
+	appUrl : "http://parkminkyu.github.io",
+	contextPath : "/Blog"
+});
 
 blogApp.config(function($routeProvider){
 	$routeProvider.when('/contents',{ 
@@ -64,21 +75,32 @@ blogControllers.controller('contentsCtrl',['$scope','$http',
 	}
 ]);
 
-blogControllers.controller('subContentsCtrl',['$scope', '$routeParams', '$http',
-	function($scope, $routeParams, $http){
+blogControllers.controller('subContentsCtrl',[ '$scope', '$routeParams', '$http',
+	function( $scope, $routeParams, $http){
 		$http.get('/data/subContents.json').success(function(data){
 			$scope.contents = data;
 			$scope.menuSeq = $routeParams.seq;
+			
+			$scope.orderProp = "-regDate";
 		});
-		$scope.orderProp = "-regDate";
+		$scope.init = function () {
+		    // check if there is query in url
+		    // and fire search in case its value is not empty
+			alert();
+		};
 	}
 ]);
 
-blogControllers.controller('viewCtrl',['$scope','$sce','$routeParams','$http',
-	function($scope, $sce, $routeParams, $http){
+blogControllers.controller('viewCtrl',['appConfig', '$scope','$sce','$routeParams','$http',
+	function(appConfig, $scope, $sce, $routeParams, $http){
 		$http.get('/data/'+$routeParams.seq+'.json').success(function(data){
 			$scope.contents = data;
 			$scope.content = $sce.trustAsHtml(data.contents);
+			$scope.myModel = {
+					Url: appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +data.seq,
+					Name: data.title 
+			};
+			$(window).scrollTop(0);
 		});
 	}
 ]);
@@ -96,7 +118,7 @@ rssControllers.controller('rssCtrl',['$scope', 'FeedService','$http',
 				Feed.parseFeed(rss.url,rss.getCount).then(function(res){
 					for(var i = 0 ; i < $scope.rssList.length ; i ++){
 						if($scope.rssList[i].url == res.data.responseData.feed.feedUrl){
-							$scope.rssList[i].subRss = res.data.responseData.feed.entries; 
+							$scope.rssList[i].data = res.data.responseData.feed.entries; 
 						}
 					}
 				});

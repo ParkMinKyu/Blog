@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="description" content="Niee 웹 개발관련 예제들과 잡다한 이야기">
+<meta name="keywords" content="AngularJS,Bootstrap,template">
+<meta name="description" content="AngularJS + Bootstrap을 이용한 블로그 템플릿 입니다.">
 <meta name="author" content="niee@naver.com">
 <link rel="icon" href="/favicon.png">
 <!-- javascript lib install -->
@@ -21,6 +22,7 @@
 <script src="/resources/lib/angular.js"></script>
 <script src="/resources/lib/angular-sanitize.min.js"></script>
 <script src="/resources/lib/angular-route.min.js"></script>
+<script src="/resources/lib/angulike.js"></script>
 <script src="/resources/js/blogApp.js"></script>
 <title>Niee's Blog</title>
 </head>
@@ -47,9 +49,13 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-6 col-md-3" ng-repeat="rss in rssList">
-			<div class="alert alert-success" role="alert">{{rss.name}} <span class="badge pull-right">{{(rss.subRss | filter:filterText).length}}</span></div>
 			<div class="list-group">
-			  <a href="{{feed.link}}" class="list-group-item" ng-repeat="feed in rss.subRss | filter:filterText">
+			<a class="list-group-item active">
+			    <h4 class="list-group-item-heading">
+					{{rss.name}} <span class="badge pull-right">{{(rss.data | filter:filterText).length}}</span>
+				</h4>
+			  </a>			
+			  <a href="{{feed.link}}" class="list-group-item" ng-repeat="feed in rss.data | filter:filterText">
 			    <h4 class="list-group-item-heading">{{feed.title}}</h4>
 			    <p class="list-group-item-text">{{feed.contentSnippet}}<br>{{feed.publishedDate | date:'yyyy년 MM월 dd일'}}</p>
 			  </a>
