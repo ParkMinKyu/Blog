@@ -43,6 +43,7 @@
 	</div>
 </nav>
 <div ng-view></div>
+<aside>
 <div class="container-fluid" data-ng-controller="rssCtrl" ng-show="rssList.length > 0">
 	<div class="page-header">
 		<h4>구독중인 rss 목록. <small>총 {{rssList.length}} 개의 rss가 등록 되었습니다.</small></h4>
@@ -63,6 +64,7 @@
         </div>
 	</div>
 </div>
+</aside>
 <nav class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container-fluid">
 		<div class="center-block git-group">

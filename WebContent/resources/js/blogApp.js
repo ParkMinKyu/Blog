@@ -9,7 +9,7 @@ var blogApp = angular.module('blogApp',
 
 blogApp.constant('appConfig',{
 	appUrl : "http://parkminkyu.github.io",
-	contextPath : "/Blog"
+	contextPath : ""
 });
 
 blogApp.config(function($routeProvider){
@@ -28,9 +28,9 @@ blogApp.config(function($routeProvider){
 });
 
 var menuControllers = angular.module('menuControllers',[]);
-menuControllers.controller('menuCtrl',['$scope', '$sce', '$http',
-	function($scope, $sce, $http){
-		$http.get('/data/menu.json').success(function(data){
+menuControllers.controller('menuCtrl',['appConfig','$scope', '$sce', '$http',
+	function(appConfig,$scope, $sce, $http){
+		$http.get(appConfig.contextPath+'/data/menu.json').success(function(data){
 			var menuList = data.menuList;
 			var menuHtml = '';
 	    	for(var i = 0 ; i < menuList.length ; i ++){
@@ -66,40 +66,37 @@ menuControllers.controller('menuCtrl',['$scope', '$sce', '$http',
 
 var blogControllers = angular.module('blogControllers',[]);
 
-blogControllers.controller('contentsCtrl',['$scope','$http',
-	function($scope,$http){
-		$http.get('/data/mainContents.json').success(function(data){
+blogControllers.controller('contentsCtrl',['appConfig','$scope','$http',
+	function(appConfig,$scope,$http){
+		$http.get(appConfig.contextPath+'/data/mainContents.json').success(function(data){
 			$scope.contents = data;
+			$scope.appConfig = appConfig;
 		});
 		$scope.orderProp = "-regDate";
 	}
 ]);
 
-blogControllers.controller('subContentsCtrl',[ '$scope', '$routeParams', '$http',
-	function( $scope, $routeParams, $http){
-		$http.get('/data/subContents.json').success(function(data){
+blogControllers.controller('subContentsCtrl',['appConfig', '$scope', '$routeParams', '$http',
+	function( appConfig,$scope, $routeParams, $http){
+		$http.get(appConfig.contextPath+'/data/subContents.json').success(function(data){
 			$scope.contents = data;
 			$scope.menuSeq = $routeParams.seq;
-			
+			$scope.appConfig = appConfig;
 			$scope.orderProp = "-regDate";
 		});
-		$scope.init = function () {
-		    // check if there is query in url
-		    // and fire search in case its value is not empty
-			alert();
-		};
 	}
 ]);
 
 blogControllers.controller('viewCtrl',['appConfig', '$scope','$sce','$routeParams','$http',
 	function(appConfig, $scope, $sce, $routeParams, $http){
-		$http.get('/data/'+$routeParams.seq+'.json').success(function(data){
+		$http.get(appConfig.contextPath+'/data/'+$routeParams.seq+'.json').success(function(data){
 			$scope.contents = data;
 			$scope.content = $sce.trustAsHtml(data.contents);
 			$scope.myModel = {
 					Url: appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +data.seq,
 					Name: data.title 
 			};
+			$scope.appConfig = appConfig;
 			$(window).scrollTop(0);
 		});
 	}
@@ -107,9 +104,9 @@ blogControllers.controller('viewCtrl',['appConfig', '$scope','$sce','$routeParam
 
 var rssControllers = angular.module('rssControllers',[]);
 
-rssControllers.controller('rssCtrl',['$scope', 'FeedService','$http',
-	function($scope, Feed,$http){
-		$http.get('/data/rss.json').success(function(data){
+rssControllers.controller('rssCtrl',['appConfig','$scope', 'FeedService','$http',
+	function(appConfig, $scope, Feed,$http){
+		$http.get(appConfig.contextPath+'/data/rss.json').success(function(data){
 			var rssList = data.rssList;
 			$scope.rssList = new Array();
 			for(var i = 0 ; i < rssList.length ; i ++){

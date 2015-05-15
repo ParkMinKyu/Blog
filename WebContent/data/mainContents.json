@@ -8,6 +8,13 @@
 						"contents" : "샘플 내용 1 입니다.",
 						"imgUrl" : "noimg.png",
 						"regDate" : "2015-05-08"
+					},
+					{
+						"seq" : 2,
+						"title" : "샘플 제목 2 입니다.",
+						"contents" : "샘플 내용 2 입니다.",
+						"imgUrl" : "noimg.png",
+						"regDate" : "2015-05-22"
 					}
 				],
 "subList" : [
