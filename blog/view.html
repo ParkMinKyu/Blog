@@ -2,14 +2,59 @@
 	<div class="page-header">
 		<h1>{{ contents.title}} <small> {{ contents.regDate }} </small></h1>
 	</div>
+	<div class="row">
+	<div class="col-sm-6">
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div ng-bind-html="content"></div>
 			<br>
 			<br>
+			<div class="row">
+				<div class="col-xs-4 col-sm-4">
+					<div google-plus="myModel.Url"></div>
+				</div>
+				<div class="col-xs-4 col-sm-4">
+					<div fb-like></div>
+				</div>
+				<div class="col-xs-4 col-sm-4">
+					<div tweet="myModel.Name"></div>
+				</div>
+			</div>
 			<p>
 				<a class="btn btn-primary" onclick="history.back(-1);" role="button">이전</a>
 			</p>
 		</div>
+	</div>
+	</div>
+	<div class="col-sm-6">
+		<div ng-show="(contents.next).length > 0 ">
+			<div class="panel panel-default" ng-repeat="next in contents.next">
+				<div class="panel-body">
+					<h3>{{next.title}}</h3>
+					<div class="row">
+						<div class="col-xs-4 col-sm-4">
+							<div google-plus="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +next.seq"></div>
+						</div>
+						<div class="col-xs-4 col-sm-4">
+							<div fb-like="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +next.seq"></div>
+						</div>
+						<div class="col-xs-4 col-sm-4">
+							<div tweet="next.title" tweet-url="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +next.seq"></div>
+						</div>
+					</div>
+					<p>
+						<a class="btn btn-primary" ng-href="#view/{{next.seq}}" role="button">글 보기</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div ng-show="(contents.next).length == 0">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h3>다음 글이 없습니다.</h3>
+				</div>
+			</div>
+		</div>
+	</div>
 	</div>
 </div>

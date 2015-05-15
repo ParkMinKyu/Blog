@@ -1,7 +1,31 @@
 {
 "success" : 1,
+"seq" : 2,
 "title" : "샘플 제목 2 입니다.",
 "contents" : "<p>샘플 내용 2 입니다.</p><p><img src='/Blog/resources/img/noimg.png'></p>",
 "imgUrl" : "noimg.png",
-"regDate" : "2015-05-08"
+"regDate" : "2015-05-08",
+"next" :[
+		{
+		"seq" : 1,
+		"title" : "다음글 1 제목 입니다.",
+		"contents" : "<p>다음글 1 내용 입니다.</p><p><img src='/Blog/resources/img/noimg.png'></p>",
+		"imgUrl" : "noimg.png",
+		"regDate" : "2015-05-08"
+		},
+		{
+		"seq" : 2,
+		"title" : "다음글 2 제목 입니다.",
+		"contents" : "<p>다음글 2 내용 입니다.</p><p><img src='/Blog/resources/img/noimg.png'></p>",
+		"imgUrl" : "noimg.png",
+		"regDate" : "2015-05-08"
+		},
+		{
+		"seq" : 3,
+		"title" : "다음글 3 제목 입니다.",
+		"contents" : "<p>다음글 3 내용 입니다.</p><p><img src='/Blog/resources/img/noimg.png'></p>",
+		"imgUrl" : "noimg.png",
+		"regDate" : "2015-05-08"
+		}
+	]
  }

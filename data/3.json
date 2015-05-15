@@ -1,7 +1,11 @@
 {
 "success" : 1,
+"seq" : 3,
 "title" : "샘플 제목 3 입니다.",
 "contents" : "<p>샘플 내용 3 입니다.</p><p><img src='/Blog/resources/img/noimg.png'></p>",
 "imgUrl" : "noimg.png",
-"regDate" : "2015-05-08"
+"regDate" : "2015-05-08",
+"next" :[
+		
+	]
  }

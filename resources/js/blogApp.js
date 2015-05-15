@@ -1,15 +1,26 @@
 'use strict';
-var blogApp = angular.module('blogApp',['ngRoute','menuControllers','blogControllers','rssControllers','ngSanitize']);
+var blogApp = angular.module('blogApp',
+		['ngRoute','menuControllers','blogControllers','rssControllers','angulike','ngSanitize'])
+		.run([
+		      '$rootScope', function ($rootScope) {
+		    	  $rootScope.facebookAppId = '[FacebookAppId]'; // set your facebook app id here
+		      }
+	]);
+
+blogApp.constant('appConfig',{
+	appUrl : "http://parkminkyu.github.io",
+	contextPath : "/Blog"
+});
 
 blogApp.config(function($routeProvider){
 	$routeProvider.when('/contents',{ 
-		templateUrl : '/Blog/blog/contents.html',
+		templateUrl : '/blog/contents.html',
 		controller : 'contentsCtrl'
 	}).when('/subContents/:seq',{ 
-		templateUrl : '/Blog/blog/subContents.html',
+		templateUrl : '/blog/subContents.html',
 		controller : 'subContentsCtrl'
 	}).when('/view/:seq',{ 
-		templateUrl : '/Blog/blog/view.html',
+		templateUrl : '/blog/view.html',
 		controller : 'viewCtrl'
 	}).otherwise({
 		redirectTo: '/contents'
@@ -17,9 +28,9 @@ blogApp.config(function($routeProvider){
 });
 
 var menuControllers = angular.module('menuControllers',[]);
-menuControllers.controller('menuCtrl',['$scope', '$sce', '$http',
-	function($scope, $sce, $http){
-		$http.get('/Blog/data/menu.json').success(function(data){
+menuControllers.controller('menuCtrl',['appConfig','$scope', '$sce', '$http',
+	function(appConfig,$scope, $sce, $http){
+		$http.get(appConfig.contextPath+'/data/menu.json').success(function(data){
 			var menuList = data.menuList;
 			var menuHtml = '';
 	    	for(var i = 0 ; i < menuList.length ; i ++){
@@ -55,39 +66,47 @@ menuControllers.controller('menuCtrl',['$scope', '$sce', '$http',
 
 var blogControllers = angular.module('blogControllers',[]);
 
-blogControllers.controller('contentsCtrl',['$scope','$http',
-	function($scope,$http){
-		$http.get('/Blog/data/mainContents.json').success(function(data){
+blogControllers.controller('contentsCtrl',['appConfig','$scope','$http',
+	function(appConfig,$scope,$http){
+		$http.get(appConfig.contextPath+'/data/mainContents.json').success(function(data){
 			$scope.contents = data;
+			$scope.appConfig = appConfig;
 		});
 		$scope.orderProp = "-regDate";
 	}
 ]);
 
-blogControllers.controller('subContentsCtrl',['$scope', '$routeParams', '$http',
-	function($scope, $routeParams, $http){
-		$http.get('/Blog/data/subContents.json').success(function(data){
+blogControllers.controller('subContentsCtrl',['appConfig', '$scope', '$routeParams', '$http',
+	function( appConfig,$scope, $routeParams, $http){
+		$http.get(appConfig.contextPath+'/data/subContents.json').success(function(data){
 			$scope.contents = data;
 			$scope.menuSeq = $routeParams.seq;
+			$scope.appConfig = appConfig;
+			$scope.orderProp = "-regDate";
 		});
-		$scope.orderProp = "-regDate";
 	}
 ]);
 
-blogControllers.controller('viewCtrl',['$scope','$sce','$routeParams','$http',
-	function($scope, $sce, $routeParams, $http){
-		$http.get('/Blog/data/'+$routeParams.seq+'.json').success(function(data){
+blogControllers.controller('viewCtrl',['appConfig', '$scope','$sce','$routeParams','$http',
+	function(appConfig, $scope, $sce, $routeParams, $http){
+		$http.get(appConfig.contextPath+'/data/'+$routeParams.seq+'.json').success(function(data){
 			$scope.contents = data;
 			$scope.content = $sce.trustAsHtml(data.contents);
+			$scope.myModel = {
+					Url: appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +data.seq,
+					Name: data.title 
+			};
+			$scope.appConfig = appConfig;
+			$(window).scrollTop(0);
 		});
 	}
 ]);
 
 var rssControllers = angular.module('rssControllers',[]);
 
-rssControllers.controller('rssCtrl',['$scope', 'FeedService','$http',
-	function($scope, Feed,$http){
-		$http.get('/Blog/data/rss.json').success(function(data){
+rssControllers.controller('rssCtrl',['appConfig','$scope', 'FeedService','$http',
+	function(appConfig, $scope, Feed,$http){
+		$http.get(appConfig.contextPath+'/data/rss.json').success(function(data){
 			var rssList = data.rssList;
 			$scope.rssList = new Array();
 			for(var i = 0 ; i < rssList.length ; i ++){
@@ -96,7 +115,7 @@ rssControllers.controller('rssCtrl',['$scope', 'FeedService','$http',
 				Feed.parseFeed(rss.url,rss.getCount).then(function(res){
 					for(var i = 0 ; i < $scope.rssList.length ; i ++){
 						if($scope.rssList[i].url == res.data.responseData.feed.feedUrl){
-							$scope.rssList[i].subRss = res.data.responseData.feed.entries; 
+							$scope.rssList[i].data = res.data.responseData.feed.entries; 
 						}
 					}
 				});
