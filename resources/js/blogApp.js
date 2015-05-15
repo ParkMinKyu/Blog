@@ -12,15 +12,15 @@ blogApp.constant('appConfig',{
 	contextPath : "/Blog"
 });
 
-blogApp.config(function($routeProvider){
+blogApp.config(function(appConfig,$routeProvider){
 	$routeProvider.when('/contents',{ 
-		templateUrl : '/blog/contents.html',
+		templateUrl : appConfig.contextPath+'/blog/contents.html',
 		controller : 'contentsCtrl'
 	}).when('/subContents/:seq',{ 
-		templateUrl : '/blog/subContents.html',
+		templateUrl : appConfig.contextPath+'/blog/subContents.html',
 		controller : 'subContentsCtrl'
 	}).when('/view/:seq',{ 
-		templateUrl : '/blog/view.html',
+		templateUrl : appConfig.contextPath+'/blog/view.html',
 		controller : 'viewCtrl'
 	}).otherwise({
 		redirectTo: '/contents'
