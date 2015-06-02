@@ -7,8 +7,8 @@
 				"getCount" : 5
 			},
 			{
-				"name" : "카페",
-				"url" : "http://cafe.rss.naver.com/javachobostudy",
+				"name" : "Test",
+				"url" : "http://localhost:8080/article/rss",
 				"getCount" : 10
 			},
 			{
