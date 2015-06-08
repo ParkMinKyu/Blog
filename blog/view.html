@@ -31,17 +31,6 @@
 			<div class="panel panel-default" ng-repeat="next in contents.next">
 				<div class="panel-body">
 					<h3>{{next.title}}</h3>
-					<div class="row">
-						<div class="col-xs-4 col-sm-4">
-							<div google-plus="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +next.seq"></div>
-						</div>
-						<div class="col-xs-4 col-sm-4">
-							<div fb-like="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +next.seq"></div>
-						</div>
-						<div class="col-xs-4 col-sm-4">
-							<div tweet="next.title" tweet-url="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +next.seq"></div>
-						</div>
-					</div>
 					<p>
 						<a class="btn btn-primary" ng-href="#view/{{next.seq}}" role="button">글 보기</a>
 					</p>
