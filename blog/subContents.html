@@ -19,19 +19,6 @@
 					<h3>{{ c.title }}</h3>
 					<p>{{ c.contents }}</p>
 					<p>
-					<div class="row">
-						<div class="col-xs-4 col-sm-4">
-							<div google-plus="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +c.seq"></div>
-						</div>
-						<div class="col-xs-4 col-sm-4">
-							<div fb-like="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +c.seq"></div>
-						</div>
-						<div class="col-xs-4 col-sm-4">
-							<div tweet="c.title" tweet-url="appConfig.appUrl + appConfig.contextPath + '/blog/main.html#/view/' +c.seq"></div>
-						</div>
-					</div>
-					</p>
-					<p>
 						<a href="#view/{{ c.seq }}" class="btn btn-primary" role="button">글 보기</a>
 						<a class="btn btn-default" role="button">{{ c.regDate }}</a>
 					</p>
