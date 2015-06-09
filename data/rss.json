@@ -7,8 +7,8 @@
 				"getCount" : 5
 			},
 			{
-				"name" : "Test",
-				"url" : "http://localhost:8080/article/rss",
+				"name" : "SpooBlog",
+				"url" : "http://parkminkyu.github.io/Blog/data/rss.xml",
 				"getCount" : 10
 			},
 			{
