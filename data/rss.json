@@ -3,7 +3,7 @@
 "rssList" : [
 			{
 				"name" : "내 블로그",
-				"url" : "http://niee.kr/rss",
+				"url" : "http://blog.rss.naver.com/niee.xml",
 				"getCount" : 5
 			},
 			{
