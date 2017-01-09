@@ -43,28 +43,6 @@
 	</div>
 </nav>
 <div ng-view></div>
-<aside>
-<div class="container-fluid" data-ng-controller="rssCtrl" ng-show="rssList.length > 0">
-	<div class="page-header">
-		<h4>구독중인 rss 목록. <small>총 {{rssList.length}} 개의 rss가 등록 되었습니다.</small></h4>
-	</div>
-	<div class="row">
-		<div class="col-sm-6 col-md-3" ng-repeat="rss in rssList">
-			<div class="list-group">
-			<a class="list-group-item active">
-			    <h4 class="list-group-item-heading">
-					{{rss.name}} <span class="badge pull-right">{{(rss.data | filter:filterText).length}}</span>
-				</h4>
-			  </a>			
-			  <a href="{{feed.link}}" class="list-group-item" ng-repeat="feed in rss.data | filter:filterText">
-			    <h4 class="list-group-item-heading">{{feed.title}}</h4>
-			    <p class="list-group-item-text">{{feed.contentSnippet}}<br>{{feed.publishedDate | date:'yyyy년 MM월 dd일'}}</p>
-			  </a>
-			</div>
-        </div>
-	</div>
-</div>
-</aside>
 <nav class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container-fluid">
 		<div class="center-block git-group">
